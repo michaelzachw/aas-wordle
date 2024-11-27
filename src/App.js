@@ -113,7 +113,7 @@ function App () {
                 <nav>
                     <ul>
                         <li><a onClick={openAbout}>About</a></li>
-                        <li><a href="/">New Game</a></li>
+                        <li><a href="/aas-wordle/">New Game</a></li>
                     </ul>
                 </nav>
             </header>
