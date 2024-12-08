@@ -1,6 +1,7 @@
 import React, { useState, useEffect} from 'react';
 import Select from 'react-select';
 import './App.css';
+import MyLineChart from './MyLineChart';
 
 const colourStyles = {
   control: (styles) => ({
@@ -19,23 +20,23 @@ const colourStyles = {
 };
 
 const movies = [
-  { value: 'blt', race: 1, modelminority: 10, gender: 5, neoliberalism: 0, sexuality: 0, label: 'Better Luck Tomorrow' },
-  { value: 'eeaao', race: 8, modelminority: 6, gender: 7, neoliberalism: 3, sexuality: 10, label: 'Everything Everywhere All at Once' },
-  { value: 'akadb', race: 1, modelminority: 2, gender: 0, neoliberalism: 10, sexuality: 0, label: 'aka. Don Bonus' },
-  { value: 'gt', race: 1, modelminority: 0, gender: 3, neoliberalism: 0, sexuality: 0, label: 'Gran Torino' },
-  { value: 'minari', race: 5, modelminority: 7, gender: 8, neoliberalism: 3, sexuality: 0, label: 'Minari' },
-  { value: 'namesake', race: 2, modelminority: 1, gender: 1, neoliberalism: 1, sexuality: 1, label: 'Namesake' },
+  { value: 'blt', race: 1, modelminority: 10, gender: 5, neoliberalism: 0, sexuality: 0, label: 'Better Luck Tomorrow', img: "https://upload.wikimedia.org/wikipedia/en/0/08/Better_luck_tomorrow_poster001.jpg" },
+  { value: 'eeaao', race: 8, modelminority: 6, gender: 7, neoliberalism: 3, sexuality: 10, label: 'Everything Everywhere All at Once', img: "https://upload.wikimedia.org/wikipedia/en/1/1e/Everything_Everywhere_All_at_Once.jpg" },
+  { value: 'akadb', race: 1, modelminority: 2, gender: 0, neoliberalism: 10, sexuality: 0, label: 'aka. Don Bonus', img: "https://m.media-amazon.com/images/M/MV5BMTU5NzkxNzA2OV5BMl5BanBnXkFtZTgwNDE4ODk1MDE@._V1_FMjpg_UX1000_.jpg" },
+  { value: 'gt', race: 1, modelminority: 0, gender: 3, neoliberalism: 0, sexuality: 0, label: 'Gran Torino', img:"https://upload.wikimedia.org/wikipedia/en/c/c6/Gran_Torino_poster.jpg" },
+  { value: 'minari', race: 5, modelminority: 7, gender: 8, neoliberalism: 3, sexuality: 0, label: 'Minari', img:"https://upload.wikimedia.org/wikipedia/en/8/8a/Minari_%28film%29.png" },
+  { value: 'namesake', race: 2, modelminority: 1, gender: 1, neoliberalism: 1, sexuality: 1, label: 'Namesake', img:"https://upload.wikimedia.org/wikipedia/en/8/8b/The_Namesake.jpg" },
 ];
 
 function App () {
   const [movieToGuess, setMovieToGuess] = useState({});
-  const [selectedOption, setSelectedOption] = useState(null);
   const [guessEntries, setGuessEntries] = useState([]);
   const [isModalOpen, setIsModalOpen] = useState(false); // State to control modal visibility
   const [winState, setWinState] = useState(false);
   const [gameOver, setGameOver] = useState(false);
   const [isAboutOpen, setIsAboutOpen] = useState(false);
-
+  const [isHowToOpen, setIsHowToOpen] = useState(false);
+  
   // Function to open the modal
   const openModal = () => {
     setIsModalOpen(true);
@@ -54,6 +55,14 @@ function App () {
     setIsModalOpen(false);
   };
 
+  const openHowTo = () =>{
+    setIsHowToOpen(true);
+  };
+
+  const closeHowTo = () =>{
+    setIsHowToOpen(false);
+  };
+
   // Modal component
   const Modal = ({onClose}) => {
     setGameOver(true);
@@ -62,7 +71,9 @@ function App () {
         <div className="modal-overlay">
           <div className="modal-content">
             <h2>Congratulations!</h2>
-            <p>You guessed the correct movie: {movieToGuess.label}</p>
+            <img src={movieToGuess.img} alt={movieToGuess.label} width="259" height="383"></img>
+            <p>You guessed the correct movie:</p>
+            <p>{movieToGuess.label}</p>
             <button onClick={onClose}>Close</button>
           </div>
         </div>
@@ -72,7 +83,9 @@ function App () {
       <div className="modal-overlay">
         <div className="modal-content">
           <h2>Sorry!</h2>
-          <p>You didn't guess the movie: {movieToGuess.label}</p>
+          <img src={movieToGuess.img} alt={movieToGuess.label} width="259" height="383"></img>
+          <p>You didn't guess the movie:</p>
+          <p>{movieToGuess.label}</p>
           <button onClick={onClose}>Close</button>
         </div>
       </div>
@@ -102,7 +115,6 @@ function App () {
       gender: selected.gender,
       neoliberalism: selected.neoliberalism,
       sexuality: selected.sexuality,
-      gender: selected.gender,
     }
     setGuessEntries([...guessEntries, newGuess])
   };
@@ -114,6 +126,7 @@ function App () {
                     <ul>
                         <li><a onClick={openAbout}>About</a></li>
                         <li><a href="/aas-wordle/">New Game</a></li>
+                        <li><a onClick={openHowTo}>How To</a></li>
                     </ul>
                 </nav>
             </header>
@@ -125,7 +138,6 @@ function App () {
                     <br></br>
                     <Select
                       styles={colourStyles}
-                      value={selectedOption}
                       onChange={addGuess}
                       options={movies}
                       isSearchable
@@ -169,9 +181,20 @@ function App () {
             {isAboutOpen && (
                     <div className="modal-overlay">
                       <div className="modal-content">
-                        <h2>Popup Title</h2>
+                        <h2>About</h2>
                         <p>This is a custom popup!</p>
                         <button onClick={closeAbout}>Close</button>
+                      </div>
+                    </div>
+            )}
+
+            {isHowToOpen && (
+                    <div className="modal-overlay">
+                      <div className="modal-content">
+                        <h2>How To</h2>
+                        <p><strong>GOAL:</strong> The goal of AAS Wordle is to guess the movie based off of how the movie you guessed relates to the key concepts of the target movie.</p>
+                        <MyLineChart />
+                        <button onClick={closeHowTo}>Close</button>
                       </div>
                     </div>
             )}
