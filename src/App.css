@@ -1,4 +1,3 @@
-
 * {
   margin: 0;
   padding: 0;
@@ -6,9 +5,10 @@
 }
 
 body {
-  font-family: Arial, sans-serif;
-  color: white;
-  background-color: black;
+  font-family: system-ui, "Segoe UI", Roboto, Helvetica, Arial, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol";
+  color: #F5F5F5;
+  background: linear-gradient(to bottom, #988071, #F5F5F5, #F5F5F5);
+  
 }
 
 
@@ -21,8 +21,8 @@ body {
 
 /* Header Styling */
 .header {
-  background-color: black;
-  color: #fff;
+  background-color: #988071;
+  color: #F5F5F5;
   padding: 20px;
   text-align: center;
   width: 100%;
@@ -43,7 +43,7 @@ body {
 }
 
 .header nav ul li a {
-  color: #fff;
+  color: #F5F5F5;
   text-decoration: none;
   font-weight: bold;
 }
@@ -64,8 +64,8 @@ body {
 }
 
 .action-button {
-  background-color: #4a90e2;
-  color: #fff;
+  background-color: #5a66ff;
+  color: #F5F5F5;
   border: none;
   padding: 10px 20px;
   cursor: pointer;
@@ -81,7 +81,7 @@ body {
 
 .footer {
   background-color: #333;
-  color: #fff;
+  color: #F5F5F5;
   text-align: center;
   padding: 10px;
   width: 100%;
@@ -90,13 +90,13 @@ body {
 .guess-entries {
   margin-top: 20px;
   padding: 20px;
-  background-color: darkgray;
+  background-color: #BFAFA6;
   border-radius: 10px;
 }
 
 .guess-entries h2 {
   margin-bottom: 10px;
-  color: white;
+  color: #F5F5F5;
 }
 
 .guess-entries table {
@@ -112,8 +112,8 @@ body {
 }
 
 .guess-entries th {
-  background-color: darkgreen;
-  color: white;
+  background-color: #6C698D;
+  color: #F5F5F5;
 }
 
 .guess-entries tr:nth-child(even) {
@@ -128,16 +128,21 @@ body {
   right: 0;
   bottom: 0;
   background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent background */
-  display: flex;
-  justify-content: center;
   align-items: center;
   z-index: 1000;
+  padding-top: 75px;
+  min-height: 100vh;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  overflow-y: auto;
+  white-space: pre-line;
 }
 
 /* Modal content box styling */
 .modal-content {
-  background-color: white;
-  color: black;
+  background-color: #988071;
+  color: #F5F5F5;
   padding: 20px;
   border-radius: 8px;
   width: 550px;
@@ -155,13 +160,13 @@ body {
 
 .modal-content button {
   padding: 10px 20px;
-  background-color: #007bff;
-  color: white;
+  background-color: #5a66ff;
+  color: #F5F5F5;
   border: none;
   border-radius: 4px;
   cursor: pointer;
 }
 
 .modal-content button:hover {
-  background-color: #0056b3;
+  background-color: #2d337f;
 }
