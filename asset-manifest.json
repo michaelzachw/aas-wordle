@@ -1,15 +1,15 @@
 {
   "files": {
     "main.css": "/aas-wordle/static/css/main.e3d767e5.css",
-    "main.js": "/aas-wordle/static/js/main.a622b885.js",
+    "main.js": "/aas-wordle/static/js/main.8c34f8c1.js",
     "static/js/453.d275e43b.chunk.js": "/aas-wordle/static/js/453.d275e43b.chunk.js",
     "index.html": "/aas-wordle/index.html",
     "main.e3d767e5.css.map": "/aas-wordle/static/css/main.e3d767e5.css.map",
-    "main.a622b885.js.map": "/aas-wordle/static/js/main.a622b885.js.map",
+    "main.8c34f8c1.js.map": "/aas-wordle/static/js/main.8c34f8c1.js.map",
     "453.d275e43b.chunk.js.map": "/aas-wordle/static/js/453.d275e43b.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.e3d767e5.css",
-    "static/js/main.a622b885.js"
+    "static/js/main.8c34f8c1.js"
   ]
 }
